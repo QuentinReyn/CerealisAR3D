@@ -9,10 +9,14 @@ public class VoxelBustersManager : MonoBehaviour
 {
 
     private bool isSharing = false;
-    
+    public GameObject modalWindow;
     public void ShareSocialMedia()
     {
+        modalWindow = GameObject.FindWithTag("modalWindow");
+        Debug.Log("Button click!");
+        modalWindow.SetActive(false);
         isSharing = true;
+      
     }
 
     private void LateUpdate()
@@ -41,6 +45,7 @@ public class VoxelBustersManager : MonoBehaviour
     {
         ShareSheet _shareSheet = new ShareSheet();
         _shareSheet.Text = "Hello World !!";
+        _shareSheet.URL = "https://twitter.com/tweet";
         _shareSheet.AttachImage(texture);
         
         NPBinding.Sharing.ShowView(_shareSheet, FinishSharing);
